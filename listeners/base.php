@@ -20,6 +20,8 @@ class base{
 		$view = $event->getView();
 		$parents = $this->getParents($view);
 		$parents[] = get_class($view);
+		$time = date::time();
+		$hour = date::format('H', $time);
 		db::join('notice_notes_users', 'notice_notes_users.note=notice_notes.id', 'LEFT');
 		db::join('notice_notes_usertypes', 'notice_notes_usertypes.note=notice_notes.id', 'LEFT');
 
@@ -36,22 +38,22 @@ class base{
 		$note->where($parenthesis);
 
 			$parenthesis = new parenthesis();
-			$parenthesis->where('notice_notes.create_at', date::time(), "<");
+			$parenthesis->where('notice_notes.create_at', $time, "<");
 			$parenthesis->where('notice_notes.create_at', null, "is", "OR");
 		$note->where($parenthesis);
 
 			$parenthesis = new parenthesis();
-			$parenthesis->where('notice_notes.start_time', date::format('H', date::time()), "<", "OR");
+			$parenthesis->where('notice_notes.start_time', $hour, "<", "OR");
 			$parenthesis->where('notice_notes.start_time', null, "is", "OR");
 		$note->where($parenthesis);
 
 			$parenthesis = new parenthesis();
-			$parenthesis->where('notice_notes.end_time', date::format('H', date::time()), ">", "OR");
+			$parenthesis->where('notice_notes.end_time', $hour, ">", "OR");
 			$parenthesis->where('notice_notes.end_time', null, "is", "OR");
 		$note->where($parenthesis);
 		
 			$parenthesis = new parenthesis();
-			$parenthesis->where('notice_notes.expire_at', date::time(), ">", "OR");
+			$parenthesis->where('notice_notes.expire_at', $time, ">", "OR");
 			$parenthesis->where('notice_notes.expire_at', null, "is", "OR");
 		$note->where($parenthesis);
 
