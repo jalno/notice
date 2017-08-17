@@ -1,0 +1,48 @@
+{
+	"name" : "clipone",
+	"title":"Clip One",
+	"version" : "1.0.0",
+	"author" : {
+		"name" : "Mahdi Abedi",
+		"website" : "https://github.com/abedi-ir"
+	},
+	"autoload":"autoloader.json",
+	"languages":{
+		"fa_IR" : "langs/fa_IR.json"
+	},
+	"assets":[
+		{"type":"package", "name":"jquery"},
+		{"type":"package", "name":"select2"},
+		{"type":"package", "name":"jquery-ui"},
+		{"type":"package", "name":"bootstrap"},
+		{"type":"package", "name":"webuilder"},
+		{"type":"package", "name":"ion-rangeslider"},
+		{"type":"package", "name":"bootstrap-inputmsg"},
+		{"type":"package", "name":"jquery-bootstrap-checkbox"},
+		{"type":"css", "file":"node_modules/select2/dist/css/select2.css"},
+		{"type":"less", "file":"assets/less/Main.less"},
+		{"type":"ts", "file":"assets/ts/Main.ts"}
+	],
+	"views":[
+		{
+			"name":"\\themes\\clipone\\views\\notice\\note\\search",
+			"parent":"\\packages\\notice\\views\\note\\search",
+			"file":"html/note/search.php"
+		},
+		{
+			"name":"\\themes\\clipone\\views\\notice\\note\\add",
+			"parent":"\\packages\\notice\\views\\note\\add",
+			"file":"html/note/add.php"
+		},
+		{
+			"name":"\\themes\\clipone\\views\\notice\\note\\edit",
+			"parent":"\\packages\\notice\\views\\note\\edit",
+			"file":"html/note/edit.php"
+		},
+		{
+			"name":"\\themes\\clipone\\views\\notice\\note\\delete",
+			"parent":"\\packages\\notice\\views\\note\\delete",
+			"file":"html/note/delete.php"
+		}
+	]
+}

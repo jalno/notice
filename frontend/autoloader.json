@@ -1,0 +1,20 @@
+{
+	"files":[
+		{
+			"classes":["views\\notice\\note\\search"],
+			"file":"views/note/search.php"
+		},
+		{
+			"classes":["views\\notice\\note\\add"],
+			"file":"views/note/add.php"
+		},
+		{
+			"classes":["views\\notice\\note\\edit"],
+			"file":"views/note/edit.php"
+		},
+		{
+			"classes":["views\\notice\\note\\delete"],
+			"file":"views/note/delete.php"
+		}
+	]
+}
