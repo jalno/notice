@@ -70,7 +70,10 @@ export default class View{
 	public static run(){
 		const ErrorsHTML = View.getErrorsHTML()
 		if(ErrorsHTML){
-			$('.main-container .main-content .container .errors').html(ErrorsHTML);
+			if(!$('.main-container .main-content .container .errors .notices').length()){
+				$('.main-container .main-content .container .errors').append($('<div class="notices"></div>'));
+			}
+			$('.main-container .main-content .container .errors .notices').html(ErrorsHTML);
 		}
 
 		const ModalsHTML = View.getModalsHTML();
