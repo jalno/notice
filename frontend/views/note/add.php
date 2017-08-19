@@ -77,21 +77,14 @@ class add extends addNote{
 	protected function getViewsForSelect():array{
 		$views = [];
 		foreach($this->getViews()->get() as $view){
-			if($address = $this->getDataForm('address') and $address == $view->getView()){
-				$views[] = [
-					'title' => $address,
-					'value' => $view->getView(),
-					'data' => [
-						'custom' => true
-					]
-				];
-			}else{
-				$views[] = [
-					'title' => translator::trans('notice.note.view.name.'.$view->getName()),
-					'value' => $view->getView()
-				];
-			}
-			
+			$translator = translator::trans('notice.note.view.name.'.$view->getName());
+			$views[] = [
+				'title' => $translator ? $translator : $view->getName(),
+				'value' => $view->getView(),
+				'data' => [
+					'custom' => ($address = $this->getDataForm('address') and $address == $view->getView())
+				]
+			];
 		}
 		return $views;
 	}

@@ -142,7 +142,8 @@ class notes extends controller{
 			],
 			'view' => [],
 			'address' => [
-				'optional' => true
+				'optional' => true,
+				'empty' => true
 			],
 			'type' => [
 				'type' => 'string',
@@ -239,7 +240,7 @@ class notes extends controller{
 			switch($inputs['user']){
 				case('all'):
 					unset($inputs['users']);
-					$inputs['usertypes'][] = usertype::get();
+					$inputs['usertypes'] = usertype::get();
 					break;
 				case('selection'):
 					if(isset($inputs['usertypes']) and !$inputs['usertypes']){
@@ -307,7 +308,7 @@ class notes extends controller{
 				}
 			}
 			$this->response->setStatus(true);
-			$this->response->Go(userpanel\url('settings/notices/notes/'.$note->id));
+			$this->response->Go(userpanel\url('settings/notice/notes/edit/'.$note->id));
 		}catch(NoViewException $error){
 			$view->setFormError(FormError::fromException($error));
 			$this->response->setStatus(false);
