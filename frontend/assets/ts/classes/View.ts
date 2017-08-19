@@ -50,7 +50,7 @@ export default class View{
 		$('.alert.notice.note-closable button.close, .modal.notice.note-closable button.close').on('click', function(){
 			const note = $('.alert.notice.note-closable, .modal.notice.note-closable').data('note');
 			AjaxRequest({
-				url: Router.url(`userpanel/notice/notes/close?ajax=1`),
+				url: Router.url(`userpanel/settings/notice/notes/close?ajax=1`),
 				data: {
 					note: note
 				},
