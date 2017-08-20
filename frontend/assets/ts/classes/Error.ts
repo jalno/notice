@@ -114,7 +114,7 @@ export default class Error{
 		}
 		const code = `<div class="alert alert-${alert['type']} ${alert['classes']}" data-note="${this.getData('note')}">
 						<button data-dismiss="alert" class="close" type="button">&times;</button>
-						${(this.getParam('canEdit')) == true ? `<a data-dismiss="alert" class="close edit" href="${Router.url(`userpanel/notice/notes/edit/${this.getData('note')}`)}"><i class="fa fa-edit"></i></a>` : ''}
+						${(this.getParam('canEdit')) == true ? `<a data-dismiss="alert" class="close edit" href="${Router.url(`userpanel/settings/notice/notes/edit/${this.getData('note')}`)}"><i class="fa fa-edit"></i></a>` : ''}
 						<h4 class="alert-heading">${alert['icon']} ${alert['title']}</h4> 
 						<p>${alert['content']}</p>
 					</div>

@@ -57,7 +57,7 @@ export default class Modal{
 		const code = `<div class="modal fade please-call-me ${classes}" id="notice-note-${this.getData('note')}" tabindex="-1" data-show="true" role="dialog" data-note="${this.getData('note')}">
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-							${this.getParam('canEdit') == true ? `<a data-dismiss="alert" class="close edit" href="${Router.url(`userpanel/notice/notes/edit/${this.getData('note')}`)}"><i class="fa fa-edit"></i></a>` : ''}
+							${this.getParam('canEdit') == true ? `<a data-dismiss="alert" class="close edit" href="${Router.url(`userpanel/settings/notice/notes/edit/${this.getData('note')}`)}"><i class="fa fa-edit"></i></a>` : ''}
 							<h4 class="modal-title">${this.getTitle()}</h4>
 						</div>
 						<div class="modal-body">
