@@ -69,8 +69,10 @@ class edit extends noteEdit{
 	}
 	private function getUserTypeParents(usertype $type):string{
 		$parnets = [];
-		foreach($type->parents as $parent){
-			$parnets[] = $parent->parent;
+		if($type->parents){
+			foreach($type->parents as $parent){
+				$parnets[] = $parent->parent;
+			}
 		}
 		return json\encode($parnets);
 	}
