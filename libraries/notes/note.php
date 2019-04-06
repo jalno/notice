@@ -66,7 +66,7 @@ class note extends dbObject{
 		db::where('note', $this->id);
 		return db::get('notice_notes_users', null, 'user');
 	}
-	public function getTypes(){
+	public function getUserTypes(){
 		db::where('note', $this->id);
 		return db::get('notice_notes_usertypes', null, 'type');
 	}
@@ -77,7 +77,7 @@ class note extends dbObject{
 		}
 		db::delete('notice_notes_users');
 	}
-	public function deleteType(usertype $type = null){
+	public function deleteUserType(usertype $type = null){
 		db::where('note', $this->id);
 		if($type){
 			db::where('type', $type->id);

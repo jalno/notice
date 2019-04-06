@@ -524,7 +524,7 @@ class notes extends controller{
 				$note->setParam('view-type', 'address');
 			}
 			$note->deleteUser();
-			$note->deleteType();
+			$note->deleteUserType();
 			$note->view = $inputs['view'];
 			if(isset($inputs['create_at'])){
 				$note->create_at = $inputs['create_at'];

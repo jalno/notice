@@ -18,7 +18,7 @@ class edit extends form{
 		foreach($note->getUsers() as $user){
 			$this->setDataForm($user['user'], "users[{$user['user']}]");
 		}
-		$this->setDataForm($note->getTypes(), "usertypes");
+		$this->setDataForm($note->getUserTypes(), "usertypes");
 	}
 	protected function getNote():note{
 		return $this->getData('note');
