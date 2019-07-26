@@ -1,4 +1,12 @@
 {
   "dependencies": {
+    "jquery": "^3.2.1",
+    "select2": "^4.0.3",
+    "jquery-ui": "^1.12.1",
+    "bootstrap": "^3.3.7",
+    "webuilder": "^1.0.6",
+    "ion-rangeslider": "^2.3.0",
+    "bootstrap-inputmsg": "^1.0.0",
+    "jquery-bootstrap-checkbox": "=1.1.1"
   }
 }
