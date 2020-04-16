@@ -5,6 +5,10 @@
 	},
 	"rtl": true,
 	"phrases":{
-		
+		"usertype.permissions.notice": "اعلان",
+		"usertype.permissions.notice_search": "جستجوی اعلان ها",
+		"usertype.permissions.notice_add": "افزودن اعلان ها",
+		"usertype.permissions.notice_edit": "ویرایش اعلان ها",
+		"usertype.permissions.notice_delete": "حذف اعلان ها"
 	}
 }

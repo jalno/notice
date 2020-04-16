@@ -1,0 +1,14 @@
+{
+	"author": {
+		"name" : "Mahdi abedi",
+		"website" : "https://github.com/abedi-ir"
+	},
+	"rtl": true,
+	"phrases":{
+		"usertype.permissions.notice": "Notice",
+		"usertype.permissions.notice_search": "Notice list",
+		"usertype.permissions.notice_add": "Add Notice",
+		"usertype.permissions.notice_edit": "Edit Notice",
+		"usertype.permissions.notice_delete": "Delete Notice"
+	}
+}
