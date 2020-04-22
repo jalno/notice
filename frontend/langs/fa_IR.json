@@ -6,10 +6,6 @@
 	"rtl": true,
 	"phrases":{
 		"notice": "اعلان ها",
-		"usertype.permissions.notice_search": "جستجوی اعلان ها",
-		"usertype.permissions.notice_add": "افزودن اعلان ها",
-		"usertype.permissions.notice_edit": "ویرایش اعلان ها",
-		"usertype.permissions.notice_delete": "حذف اعلان ها",
 		"error.notice.note.notfound": "اعلانی یافت نشد ، بعد از افزودن اعلان جدید آن را در اینجا خواهید یافت ",
 		"notice.search": "جستجو",
 		"notice.cancel": "انصراف",
