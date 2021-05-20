@@ -16,6 +16,7 @@ class Base {
 		if (!$user) {
 			return;
 		}
+		$notices['canAdd'] = Authorization::is_accessed('edit');
 		$view = $event->getView();
 		$parents = $this->getParents($view);
 		$parents[] = get_class($view);
