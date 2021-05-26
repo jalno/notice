@@ -1,70 +1,67 @@
 <?php
 namespace packages\notice\listeners;
-use \packages\base\db;
-use \packages\base\http;
-use \packages\base\json;
-use \packages\notice\note;
-use \packages\userpanel\date;
-use \packages\base\translator;
-use \packages\base\view\error;
-use \packages\base\db\parenthesis;
-use \packages\notice\authorization;
-use \packages\notice\authentication;
-use \packages\base\frontend\events\throwDynamicData;
-class base{
-	public function beforeLoad(throwDynamicData $event){
-		$user = authentication::getUser();
-		if(!$user){
+
+use packages\base\{DB, view\Error, http, JSON, DB\Parenthesis, Translator, frontend\events\ThrowDynamicData};
+use packages\notice\{Authentication, Authorization, Note};
+use packages\userpanel\{Date};
+
+class Base {
+	public function beforeLoad(ThrowDynamicData $event) {
+		$notices = array(
+			'canAdd' => false,
+			'notes' => array(),
+		);
+		$event->setData('packages_notice_notes', $notices);
+		$user = Authentication::getUser();
+		if (!$user) {
 			return;
 		}
+		$notices['canAdd'] = Authorization::is_accessed('edit');
 		$view = $event->getView();
 		$parents = $this->getParents($view);
 		$parents[] = get_class($view);
-		$time = date::time();
-		$hour = date::format('H', $time);
+		$time = Date::time();
+		$hour = Date::format('H', $time);
 		db::join('notice_notes_users', 'notice_notes_users.note=notice_notes.id', 'LEFT');
 		db::join('notice_notes_usertypes', 'notice_notes_usertypes.note=notice_notes.id', 'LEFT');
 
-		$note = new note();
+		$notes = new note();
 
-			$parenthesis = new parenthesis();
+			$parenthesis = new Parenthesis();
 			$parenthesis->where('notice_notes.view', $parents, 'in');
 			$parenthesis->where('notice_notes.view', http::getURL(), 'equals', "OR");
-		$note->where($parenthesis);
+		$notes->where($parenthesis);
 
-			$parenthesis = new parenthesis();
+			$parenthesis = new Parenthesis();
 			$parenthesis->where('notice_notes_users.user', $user->id);
 			$parenthesis->orWhere('notice_notes_usertypes.type', $user->type->id);
-		$note->where($parenthesis);
+		$notes->where($parenthesis);
 
-			$parenthesis = new parenthesis();
+			$parenthesis = new Parenthesis();
 			$parenthesis->where('notice_notes.create_at', $time, "<");
 			$parenthesis->where('notice_notes.create_at', null, "is", "OR");
-		$note->where($parenthesis);
+		$notes->where($parenthesis);
 
-			$parenthesis = new parenthesis();
+			$parenthesis = new Parenthesis();
 			$parenthesis->where('notice_notes.start_time', $hour, "<", "OR");
 			$parenthesis->where('notice_notes.start_time', null, "is", "OR");
-		$note->where($parenthesis);
+		$notes->where($parenthesis);
 
-			$parenthesis = new parenthesis();
+			$parenthesis = new Parenthesis();
 			$parenthesis->where('notice_notes.end_time', $hour, ">", "OR");
 			$parenthesis->where('notice_notes.end_time', null, "is", "OR");
-		$note->where($parenthesis);
+		$notes->where($parenthesis);
 		
-			$parenthesis = new parenthesis();
+			$parenthesis = new Parenthesis();
 			$parenthesis->where('notice_notes.expire_at', $time, ">", "OR");
 			$parenthesis->where('notice_notes.expire_at', null, "is", "OR");
-		$note->where($parenthesis);
+		$notes->where($parenthesis);
 
-		$note->where('notice_notes.status', note::active);
-		$note->setQueryOption('DISTINCT');
-		$nots = $note->get(null, ['notice_notes.*']);
-		$notices = [
-			'canAdd' => authorization::is_accessed('edit'),
-			'notes' => []
-		];
-		foreach($nots as $note){
+		$notes->where('notice_notes.status', note::active);
+		$notes->setQueryOption('DISTINCT');
+		$notes = $notes->get(null, ['notice_notes.*']);
+
+		foreach ($notes as $note) {
 			if($note->param('show-option') == 'once' and $note->isClosed($user)){
 				continue;
 			}

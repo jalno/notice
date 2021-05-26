@@ -3,45 +3,81 @@ import "bootstrap/js/modal";
 import Error from "./Error";
 import Modal from "./Modal";
 import {Router, AjaxRequest, webuilder} from "webuilder";
-interface note{
-	title:string;
-	content:string;
-	type:'modal' | 'alert';
-	params:any;
-	data:any;
-	
+
+declare const packages_notice_notes: {
+	canAdd: boolean;
+	notes: INote[],
+};
+
+interface IData {
+	[key: string]: string | number | IData | any;
 }
-export default class View{
-	static notes:note[] = [];
-	static Modals:Modal[] = [];
-	static Errors:Error[] = [];
-	public static addModal(note:note){
+
+interface INote {
+	title: string;
+	content: string;
+	type: "modal" | "alert";
+	params: IData;
+	data: IData;
+}
+export default class View {
+	public static notes: INote[] = [];
+	public static modals: Modal[] = [];
+	public static errors: Error[] = [];
+
+	public static initIfNeeded() {
+		if (typeof packages_notice_notes !== undefined) {
+			View.notes = packages_notice_notes.notes;
+			if (View.notes) {
+				View.init();
+			}
+			if (packages_notice_notes.canAdd) {
+				View.shortcut();
+			}
+		}
+	}
+
+	public static init() {
+		for(const note of View.notes){
+			switch(note.type){
+				case('alert'):
+					View.addError(note);
+					break
+				case('modal'):
+					View.addModal(note);
+					break
+			}
+		}
+		View.run();
+	}
+
+	public static addModal(note:INote){
 		const modal = new Modal();
 		modal.setTitle(note.title);
 		modal.setMessage(note.content);
 		modal.setParam(note.params);
 		modal.setData(note.data);
-		View.Modals.push(modal);
+		View.modals.push(modal);
 	}
-	public static addError(note:note){
+	public static addError(note:INote) {
 		const error = new Error();
 		error.setType(note.params.style);
 		error.setTitle(note.title);
 		error.setMessage(note.content);
 		error.setParam(note.params);
 		error.setData(note.data);
-		View.Errors.push(error);
+		View.errors.push(error);
 	}
 	public static getErrorsHTML():string{
 		let code = '';
-		for(const error of this.Errors){
+		for(const error of this.errors){
 			code += error.getHtml();
 		}
 		return code;
 	}
 	public static getModalsHTML(){
 		let code = '';
-		for(const modal of this.Modals){
+		for(const modal of this.modals){
 			code += modal.getHTML();
 		}
 		return code;
@@ -90,28 +126,6 @@ export default class View{
 				<i class="fa fa-sticky-note-o"></i>
 				<div></div></a></li>`
 			$('.navbar-tools .nav.navbar-right').prepend(bell);
-		}
-	}
-	public static init(){
-		for(const note of View.notes){
-			switch(note.type){
-				case('alert'):
-					View.addError(note);
-					break
-				case('modal'):
-					View.addModal(note);
-					break
-			}
-		}
-		View.run();
-	}
-	public static initIfNeeded(){
-		View.notes = packages_notice_notes.notes;
-		if(packages_notice_notes.canAdd){
-			View.shortcut();
-		}
-		if(View.notes){
-			View.init();
 		}
 	}
 }
