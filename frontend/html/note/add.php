@@ -1,6 +1,6 @@
 <?php
-use \packages\base\view\error;
-use \packages\base\translator;
+use \packages\base\View\Error;
+use \packages\base\Translator;
 use \packages\userpanel;
 $this->the_header();
 ?>
@@ -10,7 +10,7 @@ $this->the_header();
 			<div class="preview"></div>
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<i class="fa fa-plus"></i> <?php echo translator::trans("notice.note.add"); ?>
+					<i class="fa fa-plus"></i> <?php echo Translator::trans("notice.note.add"); ?>
 					<div class="panel-tools">
 						<a class="btn btn-xs btn-link panel-collapse collapses" href="#"></a>
 					</div>
@@ -22,7 +22,7 @@ $this->the_header();
 						$this->createField([
 							'name' => 'view',
 							'type' => 'select',
-							'label' => translator::trans('notice.note.view'),
+							'label' => Translator::trans('notice.note.view'),
 							'options' => $this->getViewsForSelect()
 						]);
 						?>
@@ -32,7 +32,7 @@ $this->the_header();
 						$this->createField([
 							'type' => 'select',
 							'name' => 'type',
-							'label' => translator::trans('notice.note.type'),
+							'label' => Translator::trans('notice.note.type'),
 							'options' => $this->getTypeForSelect()
 						]);
 						?>
@@ -44,7 +44,7 @@ $this->the_header();
 						$this->createField([
 							'type' => 'select',
 							'name' => 'status',
-							'label' => translator::trans('notice.note.status'),
+							'label' => Translator::trans('notice.note.status'),
 							'options' => $this->getStatusForSelect()
 						]);
 						?>
@@ -56,7 +56,7 @@ $this->the_header();
 						]); ?>
 						<?php echo $this->createField([
 							'name' => 'address',
-							'label' => translator::trans('notice.note.address'),
+							'label' => Translator::trans('notice.note.address'),
 							'ltr' => true,
 							'placeholder' => 'https://www.yourdomain.com/page'
 						]); ?>
@@ -67,7 +67,7 @@ $this->the_header();
 						<?php
 						$this->createField([
 							'name' => 'create_at',
-							'label' => translator::trans('notice.note.create_at'),
+							'label' => Translator::trans('notice.note.create_at'),
 							'ltr' => true
 						]);
 						?>
@@ -76,7 +76,7 @@ $this->the_header();
 						<?php
 						$this->createField([
 							'name' => 'expire_at',
-							'label' => translator::trans('notice.note.expire_at'),
+							'label' => Translator::trans('notice.note.expire_at'),
 							'ltr' => true
 						]);
 						?>
@@ -102,17 +102,17 @@ $this->the_header();
 							<div class="col-sm-6">
 								<?php foreach(['success', 'warning'] as $state){ ?>
 									<div class="alert alert-<?php echo $state; ?>">
-										<button class="close" type="button" titile="<?php echo translator::trans('notice.close'); ?>">&times;</button>
+										<button class="close" type="button" titile="<?php echo Translator::trans('notice.close'); ?>">&times;</button>
 										<h4 class="alert-heading">
-											<?php echo translator::trans('notice.note.error.state.heading.'.$state); ?>
+											<?php echo Translator::trans('notice.note.error.state.heading.'.$state); ?>
 										</h4>
 										<?php $this->createField([
 											'name' => 'style',
 											'type' => 'radio',
 											'options' => [
 												[
-													'label' => translator::trans('notice.note.error.state.'.$state),
-													'value' => $state == 'success' ? error::SUCCESS : error::WARNING
+													'label' => Translator::trans('notice.note.error.state.'.$state),
+													'value' => $state == 'success' ? Error::SUCCESS : Error::WARNING
 												]
 											]
 										]); ?>
@@ -122,17 +122,17 @@ $this->the_header();
 							<div class="col-sm-6">
 								<?php foreach(['info', 'danger'] as $state){ ?>
 									<div class="alert alert-<?php echo $state; ?>">
-										<button class="close" type="button" titile="<?php echo translator::trans('notice.close'); ?>">&times;</button>
+										<button class="close" type="button" titile="<?php echo Translator::trans('notice.close'); ?>">&times;</button>
 										<h4 class="alert-heading">
-											<?php echo translator::trans('notice.note.error.state.heading.'.$state); ?>
+											<?php echo Translator::trans('notice.note.error.state.heading.'.$state); ?>
 										</h4>
 										<?php $this->createField([
 											'name' => 'style',
 											'type' => 'radio',
 											'options' => [
 												[
-													'label' => translator::trans('notice.note.error.state.'.$state),
-													'value' => $state == 'info' ? error::NOTICE : error::FATAL
+													'label' => Translator::trans('notice.note.error.state.'.$state),
+													'value' => $state == 'info' ? Error::NOTICE : Error::FATAL
 												]
 											]
 										]); ?>
@@ -148,11 +148,11 @@ $this->the_header();
 							'type' => 'radio',
 							'options' => [
 								[
-									'label' => translator::trans('notice.note.user.all'),
+									'label' => Translator::trans('notice.note.user.all'),
 									'value' => 'all'
 								],
 								[
-									'label' => translator::trans('notice.note.user.selection'),
+									'label' => Translator::trans('notice.note.user.selection'),
 									'value' => 'selection'
 								]
 							]
@@ -162,15 +162,15 @@ $this->the_header();
 							'type' => 'radio',
 							'options' => [
 								[
-									'label' => translator::trans('notice.note.show.once'),
+									'label' => Translator::trans('notice.note.show.once'),
 									'value' => 'once'
 								],
 								[
-									'label' => translator::trans('notice.note.show.closable'),
+									'label' => Translator::trans('notice.note.show.closable'),
 									'value' => 'closable'
 								],
 								[
-									'label' => translator::trans('notice.note.show.to_expire'),
+									'label' => Translator::trans('notice.note.show.to_expire'),
 									'value' => 'expire_at'
 								]
 							]
@@ -179,18 +179,18 @@ $this->the_header();
 						<div class="col-sm-6 user-selection">
 							<?php $this->createField([
 								'name' => 'usertypes[]',
-								'label' => translator::trans('notice.note.user.usertypes'),
+								'label' => Translator::trans('notice.note.user.usertypes'),
 								'type' => 'checkbox',
 								'inline' => true,
 								'options' => $this->getUserTypesForSelect()
 							]); ?>
 							<?php $this->createField([
 								'name' => 'username',
-								'label' => translator::trans("notice.note.user")
+								'label' => Translator::trans("notice.note.user")
 							]); ?>
 							<div class="panel panel-white" style="display: none;">
 								<div class="panel-heading">
-									<i class="fa fa-user-plus"></i> <?php echo translator::trans("notice.note.users"); ?>
+									<i class="fa fa-user-plus"></i> <?php echo Translator::trans("notice.note.users"); ?>
 									<div class="panel-tools">
 										<a class="btn btn-xs btn-link panel-collapse collapses" href="#"></a>
 									</div>
@@ -204,7 +204,7 @@ $this->the_header();
 						<div class="col-sm-6">
 							<?php $this->createField([
 								'name' => 'title',
-								'label' => translator::trans('notice.note.title')
+								'label' => Translator::trans('notice.note.title')
 							]); ?>
 						</div>
 						<div class="col-sm-6">
@@ -216,7 +216,7 @@ $this->the_header();
 						$this->createField(array(
 								'type' => 'textarea',
 								'name' => 'content',
-								'label' => translator::trans("notice.note.content"),
+								'label' => Translator::trans("notice.note.content"),
 								'rows' => 4,
 								'class' => 'form-control ckeditor'
 							));
@@ -227,13 +227,13 @@ $this->the_header();
 						<div class="col-sm-6 pull-left">
 							<div class="btn-group btn-group-justified">
 								<div class="btn-group">
-									<a href="<?php echo userpanel\url('settings/notice/notes'); ?>" class="btn btn-default"><i class="fa fa-chevron-circle-right"></i> <?php echo translator::trans("notice.return"); ?></a>
+									<a href="<?php echo userpanel\url('settings/notice/notes'); ?>" class="btn btn-default"><i class="fa fa-chevron-circle-right"></i> <?php echo Translator::trans("notice.return"); ?></a>
 								</div>
 								<div class="btn-group">
-									<a class="btn btn-teal btn-preview"><i class="fa fa-eye"></i> <?php echo translator::trans("notice.preview"); ?></a>
+									<a class="btn btn-teal btn-preview"><i class="fa fa-eye"></i> <?php echo Translator::trans("notice.preview"); ?></a>
 								</div>
 								<div class="btn-group">
-									<button type="submit" class="btn btn-success"><i class="fa fa-plus"></i> <?php echo translator::trans("notice.add"); ?></button>
+									<button type="submit" class="btn btn-success"><i class="fa fa-plus"></i> <?php echo Translator::trans("notice.add"); ?></button>
 								</div>
 							</div>
 						</div>
@@ -246,10 +246,10 @@ $this->the_header();
 <div class="modal fade" id="modal-preview" tabindex="-1" data-show="true" role="dialog">
 	<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		<h4 class="modal-title"><?php echo translator::trans('notice.note.title'); ?></h4>
+		<h4 class="modal-title"><?php echo Translator::trans('notice.note.title'); ?></h4>
 	</div>
 	<div class="modal-body">
-	<?php echo translator::trans('notice.note.content'); ?>
+	<?php echo Translator::trans('notice.note.content'); ?>
 	</div>
 </div>
 <?php
