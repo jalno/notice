@@ -1,0 +1,24 @@
+{
+    "name": "jalno/notice",
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "jalno/base": "@dev",
+        "jalno/userpanel": "@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "packages\\notice\\": [
+                "libraries/"
+            ],
+            "themes\\clipone\\Views\\Notice\\": [
+                "frontend/Views/"
+            ],
+            "themes\\clipone\\Notice\\Notes\\": [
+                "frontend/library/services/"
+            ]
+        }
+    }
+}
