@@ -20,5 +20,10 @@
                 "frontend/library/services/"
             ]
         }
+    },
+    "extra": {
+        "jalno": {
+            "manifest": "package.json"
+        }
     }
 }

@@ -1,42 +1,42 @@
 [
 	{
-		"path": ["userpanel", "settings", "notice", "notes"],
-		"controller": "controllers\\notes@search",
+		"path": "userpanel/settings/notice/notes",
+		"controller": "packages/notice/Controllers/Notes@search",
 		"method": "get"
 	},
 	{
-		"path": ["userpanel", "settings", "notice", "notes", "add"],
-		"controller": "controllers\\notes@add",
+		"path": "userpanel/settings/notice/notes/add",
+		"controller": "packages/notice/Controllers/Notes@add",
 		"method": "get"
 	},
 	{
-		"path": ["userpanel", "settings", "notice", "notes", "add"],
-		"controller": "controllers\\notes@store",
+		"path": "userpanel/settings/notice/notes/add",
+		"controller": "packages/notice/Controllers/Notes@store",
 		"method": "post"
 	},
 	{
-		"path": ["userpanel", "settings", "notice", "notes", "close"],
-		"controller": "controllers\\notes@close",
+		"path": "userpanel/settings/notice/notes/close",
+		"controller": "packages/notice/Controllers/Notes@close",
 		"method": "post"
 	},
 	{
 		"path": ["userpanel", "settings", "notice", "notes", "edit", {"type":"dynamic", "name":"note", "regex":"/^\\d+$/"}],
-		"controller": "controllers\\notes@edit",
+		"controller": "packages/notice/Controllers/Notes@edit",
 		"method": "get"
 	},
 	{
 		"path": ["userpanel", "settings", "notice", "notes", "edit", {"type":"dynamic", "name":"note", "regex":"/^\\d+$/"}],
-		"controller": "controllers\\notes@update",
+		"controller": "packages/notice/Controllers/Notes@update",
 		"method": "post"
 	},
 	{
 		"path": ["userpanel", "settings", "notice", "notes", "delete", {"type":"dynamic", "name":"note", "regex":"/^\\d+$/"}],
-		"controller": "controllers\\notes@delete",
+		"controller": "packages/notice/Controllers/Notes@delete",
 		"method": "get"
 	},
 	{
 		"path": ["userpanel", "settings", "notice", "notes", "delete", {"type":"dynamic", "name":"note", "regex":"/^\\d+$/"}],
-		"controller": "controllers\\notes@terminate",
+		"controller": "packages/notice/Controllers/Notes@terminate",
 		"method": "post"
 	}
 ]

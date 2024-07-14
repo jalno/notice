@@ -9,15 +9,14 @@
 		"fa_IR" : "langs/fa_IR.json",
 		"en_US" : "langs/en_US.json"
 	},
-	"dependencies": ["base", "userpanel"],
 	"events": [
 		{
-			"name":"\\packages\\userpanel\\events\\usertype_permissions_list",
-			"listener": "listeners\\settings\\usertype@permissions_list"
+			"name":"packages/userpanel/Events/UserTypePermissionsList",
+			"listener": "packages/notice/Settings/UserType@permissions_list"
 		},
 		{
-			"name":"\\packages\\base\\frontend\\events\\throwDynamicData",
-			"listener": "listeners\\base@beforeLoad"
+			"name":"packages/base/frontend/Events/ThrowDynamicData",
+			"listener": "packages/notice/Listeners/Base@beforeLoad"
 		}
 	]
 }
