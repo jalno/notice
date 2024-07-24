@@ -6,7 +6,6 @@
 		"name" : "Mahdi Abedi",
 		"website" : "https://github.com/abedi-ir"
 	},
-	"autoload":"autoloader.json",
 	"languages":{
 		"fa_IR" : "langs/fa_IR.json"
 	},
@@ -22,27 +21,5 @@
 		{"type":"css", "file":"node_modules/select2/dist/css/select2.css"},
 		{"type":"less", "file":"assets/less/Main.less"},
 		{"type":"ts", "file":"assets/ts/Main.ts"}
-	],
-	"views":[
-		{
-			"name":"\\themes\\clipone\\views\\notice\\note\\search",
-			"parent":"\\packages\\notice\\views\\note\\search",
-			"file":"html/note/search.php"
-		},
-		{
-			"name":"\\themes\\clipone\\views\\notice\\note\\add",
-			"parent":"\\packages\\notice\\views\\note\\add",
-			"file":"html/note/add.php"
-		},
-		{
-			"name":"\\themes\\clipone\\views\\notice\\note\\edit",
-			"parent":"\\packages\\notice\\views\\note\\edit",
-			"file":"html/note/edit.php"
-		},
-		{
-			"name":"\\themes\\clipone\\views\\notice\\note\\delete",
-			"parent":"\\packages\\notice\\views\\note\\delete",
-			"file":"html/note/delete.php"
-		}
 	]
 }
