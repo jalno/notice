@@ -1,4 +1,3 @@
-import * as $ from "jquery";
 import "bootstrap/js/modal";
 import Error from "./Error";
 import Modal from "./Modal";

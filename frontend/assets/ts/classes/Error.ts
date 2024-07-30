@@ -1,4 +1,3 @@
-import * as $ from "jquery";
 import {Router} from "webuilder";
 type thisType = "success" | "warning" | "fatal" | "notice";
 export default class Error{

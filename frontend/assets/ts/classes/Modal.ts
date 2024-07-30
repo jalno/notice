@@ -1,4 +1,3 @@
-import * as $ from "jquery";
 import {Router} from "webuilder";
 export default class Modal{
 	protected data:any;

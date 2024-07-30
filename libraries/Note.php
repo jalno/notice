@@ -6,6 +6,7 @@ use packages\base\DB;
 use packages\base\DB\DBObject;
 use packages\userpanel\User;
 use packages\userpanel\UserType;
+use packages\notice\Note\Param;
 
 class Note extends DBObject
 {
@@ -28,7 +29,7 @@ class Note extends DBObject
         'status' => ['type' => 'int', 'required' => true],
     ];
     protected $relations = [
-        'params' => ['hasMany', 'packages\\notice\\note\\param', 'note'],
+        'params' => ['hasMany', Param::class, 'note'],
     ];
 
     public function addUser(User $user)

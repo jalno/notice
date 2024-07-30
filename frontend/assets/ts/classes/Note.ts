@@ -1,4 +1,3 @@
-import * as $ from "jquery";
 import "select2";
 import "jquery-ui/ui/widgets/autocomplete.js";
 import "jquery-bootstrap-checkbox";
